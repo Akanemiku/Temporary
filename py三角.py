@@ -28,3 +28,11 @@ for i in range(a,b+1):
     else:
         count+=1
         print("{:<4}".format(i),end=" ")
+
+#四种方法初始化列表
+s1 = [i+1 for i in range(10)]
+s2 = list(range(1,11))
+s3 = []
+for i in range(10):
+    s3.append(i+1)
+s4 = [0]*10
