@@ -95,7 +95,9 @@ class Assistant:public Graduate,public Teacher
 {
 public:
     Assistant(){}
-    Assistant(Birthday birth,Gender gender,string name,int score,string advisor,string title):
+    Assistant(Birthday birth,Gender gender,string name,int score,string advisor,string title)
+    :Graduate(birth,gender,name,score,advisor)
+    ,Teacher(birth,gender,name,title)
     {
         
     }
