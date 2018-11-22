@@ -50,3 +50,21 @@ while(True):
 print(a)
 
 
+a = []
+while(True):
+	b = list(list(map,input().split()))
+	if len(b) == 0:
+		break
+	a.append(b)
+l = len(a)
+w = len(a[0])
+#按行输出
+for row in range(l):
+	for col in range(w):
+		print(a[row][col],end = "")
+	print()
+#按列输出
+for row in range(w):
+	for col in range(l):
+		print(a[row][col],end = "")
+	print()
