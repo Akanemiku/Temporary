@@ -38,3 +38,10 @@ for triangle(c,n):
         count+=1
         
 triangel('#',3)
+
+
+for triangle(c,n):
+    for i in range(1,n+1):
+        print(''*(n-i)+'*'*i)
+triangel('#',3)
+
