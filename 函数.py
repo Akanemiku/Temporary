@@ -28,6 +28,13 @@ def a(n):
 a(5)
 
 for triangle(c,n):
+    '''
     for i in range(1,n+1):
         print(i*c)
+    '''
+    count = 1
+    while count<=n:
+        print(count*c)
+        count+=1
+        
 triangel('#',3)
