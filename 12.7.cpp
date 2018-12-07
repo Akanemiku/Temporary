@@ -10,7 +10,7 @@ public:
     //默认构造函数
     DynamicArray()
     {
-        this->capacity_ = 10;
+        this->capacity_ = 100;
         this->size_ = 0;
         this->data_ = new T[this->capacity_];
     }
@@ -18,19 +18,25 @@ public:
     DynamicArray(size_t size)
     {
         this->capacity_ = 100;
-        this->size_ = size_;
+        this->size_ = size;
         this->data_ = new T[this->capacity_];
 
     }
     //从数组中构造动态数组
     DynamicArray(T arr[], size_t size)
     {
-        
+        this->capacity_ = 100;
+        this->size_ = size;
+        this->data_ = new T[this->capacity_];
+        for(int i=0;i<size;i++)
+        {
+            this->data_[i] = arr[i];
+        }
     }
     //拷贝构造函数
     DynamicArray(const DynamicArray& rhs)
     {
-        this->capacity_ =  rhs.capacity_;
+        this->capacity_ = rhs.capacity_;
         this->size_ = rhs.size_;
         this->data_ = new T[this->capacity_];
         //拷贝数据
@@ -50,8 +56,8 @@ public:
 
         //分配内存
         this->size_ = arr.size_;
-        this->capacity_ =  arr.capacity_;
-        this->data_ = new T[arr.data_];
+        this->capacity_ = arr.capacity_;
+        this->data_ = new T[arr.capacity_];
 
         //拷贝数据
         for(int i=0;i<this->size_;i++)
@@ -75,7 +81,16 @@ public:
     //检查动态数组容量，如果数组长度>=数组容量，重新分配内存空间，并将原始数据复制到新空间
     void check_capacity()
     {
-
+        if(this->size_>=this->capacity_)
+        {
+            capacity_+=10;
+            this->data_ = new T[this->capacity_];
+            /*
+            for(int i=0;i<this->size_;i++)
+            {
+                this->data_[i] = arr.data_[i];
+            }*/
+        }
     }
     //数组末尾添加一个元素
     void push_back(const T& item)
@@ -111,7 +126,7 @@ public:
     {
         return capacity_;
     }
-        //下标运算符重载[],返回pos位置的元素
+    //下标运算符重载[],返回pos位置的元素
     T& operator[](size_t pos)
     {
         if(pos<0 || pos>this->size_-1)
@@ -133,92 +148,129 @@ int main()
 
 
 
-class Student  
-{  
-public:  
-    enum SortType { byname, byscore };  
-    static SortType sort_type;  
-    Student(string name, int score) :name_(name), score_(score) {}  
-    bool operator > (const Student& rhs)  
-    {  
-           //to do list  
-    }  
-    bool operator < (const Student& rhs)  
-    {  
-           //to do list  
-    }  
-    friend ostream& operator<<(ostream& os, Student& student);  
-private:  
-    string name_;  
-    int score_;  
-};  
-int main() {  
-    int int_array[] = { 61, 17, 29, 22, 34, 60, 72, 21, 50, 1, 62 };  
-    int len = (int) sizeof(int_array) / sizeof(*int_array);  
-    cout << "origin int array:" << endl;  
-    Print(int_array, len);  
-    bubble_sort(int_array, len, greater_than);  
-    cout << "sort: ascending order:" << endl;  
-    Print(int_array, len);  
-    bubble_sort(int_array, len, less_than);  
-	cout << "sort: descending order:" << endl;  
-    Print(int_array, len);  
 
-    cout << "\n----------华丽的分割线 666-----------------\n" << endl;  
+#include<iostream>
+#include<string>
+using namespace std;
 
-    float float_array[] = { 17.5f, 19.1f, 0.6f, 1.9f, 10.5f, 12.4f, 3.8f, 19.7f, 1.5f, 25.4f, 28.6f, 4.4f, 23.8f, 5.4f };  
-    len = (int) sizeof(float_array) / sizeof(*float_array);  
-    cout << "origin float array:" << endl;  
-    Print(float_array, len);  
-    bubble_sort(float_array, len, greater_than);  
-    cout << "sort: ascending order:" << endl;  
-    Print(float_array, len);  
-    bubble_sort(float_array, len, less_than);  
-    cout << "sort: descending order:" << endl;  
-    Print(float_array, len);  
+class Student
+{
+public:
+    enum SortType { byname, byscore };
+    static SortType sort_type;
+    Student(string name, int score) :name_(name), score_(score) {}
+    bool operator > (const Student& rhs)
+    {
+        if(sort_type==byname) {return name_ > rhs.name_;}
+        else {return score_ > rhs.score_;}
+    }
+    bool operator < (const Student& rhs)
+    {
+       return !(*this > rhs);
+    }
+    friend ostream& operator<<(ostream& os, Student& student)
+    {
+        os<<"姓名："<<name_<<" "<<"学号："<<score_<<endl;
+        return os;
+    }
+private:
+    string name_;
+    int score_;
+};
 
-    //cout << "\n----------华丽的分割线 666-----------------\n" << endl;  
+template <class T>
+bool greater_than(T x,T y)
+{
+    if(x>y){return true;}
+    else return false;
+}
+template <class T>
+bool less_than(T x,T y)
+{
+    if(x>=y){return false;}
+    else return true;
+}
 
-    //注释部分是关于C语言的字符串比较，需要重载模板函数，有兴趣可以做，没兴趣就当注释。  
-    /*const char* const_char_array[] = { "ye", "meng", "jie" }; 
-    len = (int) sizeof(const_char_array) / sizeof(*const_char_array); 
-    cout << "origin float array:" << endl; 
-    Print(const_char_array, len); 
-    bubble_sort(const_char_array, len, greater_than); 
-    cout << "sort: ascending order:" << endl; 
-    Print(const_char_array, len); 
-    bubble_sort(const_char_array, len, less_than); 
-    cout << "sort: descending order:" << endl; 
-    Print(const_char_array, len);*/  
+void Print(int *arr,int len)
+{
+    for(int i=0;i<len;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
 
-    cout << "\n----------华丽的分割线 666-----------------\n" << endl;  
+template <class T>
+void bubble_sort(T arr[], int len, bool(*compare)(T&, T&));
 
-    Student student_array[] = { Student("ye",100), Student("meng",60), Student("jie",70) };  
-    len = (int) sizeof(student_array) / sizeof(*student_array);  
-    //sort by name  
-    cout << "sort student object by name------" << endl;  
-    Student::sort_type = Student::byname;  
-    cout << "origin student array:" << endl;  
-    Print(student_array, len);  
-    bubble_sort(student_array, len, greater_than);  
-    cout << "sort by name: ascending order:" << endl;  
-    Print(student_array, len);  
-    bubble_sort(student_array, len, less_than);  
-    cout << "sort by name: descending order:" << endl;  
-    Print(student_array, len);  
+Student::SortType Student::sort_type = Student::byscore;
+int main() {
+    int int_array[] = { 61, 17, 29, 22, 34, 60, 72, 21, 50, 1, 62 };
+    int len = (int) sizeof(int_array) / sizeof(*int_array);
+    cout << "origin int array:" << endl;
+    Print(int_array, len);
+    bubble_sort(int_array, len, greater_than);
+    cout << "sort: ascending order:" << endl;
+    Print(int_array, len);
+    bubble_sort(int_array, len, less_than);
+	cout << "sort: descending order:" << endl;
+    Print(int_array, len);
 
-    cout << "\n----------华丽的分割线 666-----------------\n" << endl;  
+    cout << "\n----------华丽的分割线 666-----------------\n" << endl;
 
-    //sort by score  
-    cout << "sort student object by score------" << endl;  
-    Student::sort_type = Student::byscore;  
-    cout << "origin student array:" << endl;  
-    Print(student_array, len);  
-    bubble_sort(student_array, len, greater_than);  
-    cout << "sort by score: ascending order:" << endl;  
-    Print(student_array, len);  
-    bubble_sort(student_array, len, less_than);  
-    cout << "sort by score: descending order:" << endl;  
-    Print(student_array, len);  
-    return 0;  
-}  
+    float float_array[] = { 17.5f, 19.1f, 0.6f, 1.9f, 10.5f, 12.4f, 3.8f, 19.7f, 1.5f, 25.4f, 28.6f, 4.4f, 23.8f, 5.4f };
+    len = (int) sizeof(float_array) / sizeof(*float_array);
+    cout << "origin float array:" << endl;
+    Print(float_array, len);
+    bubble_sort(float_array, len, greater_than);
+    cout << "sort: ascending order:" << endl;
+    Print(float_array, len);
+    bubble_sort(float_array, len, less_than);
+    cout << "sort: descending order:" << endl;
+    Print(float_array, len);
+
+    //cout << "\n----------华丽的分割线 666-----------------\n" << endl;
+
+    //注释部分是关于C语言的字符串比较，需要重载模板函数，有兴趣可以做，没兴趣就当注释。
+    /*const char* const_char_array[] = { "ye", "meng", "jie" };
+    len = (int) sizeof(const_char_array) / sizeof(*const_char_array);
+    cout << "origin float array:" << endl;
+    Print(const_char_array, len);
+    bubble_sort(const_char_array, len, greater_than);
+    cout << "sort: ascending order:" << endl;
+    Print(const_char_array, len);
+    bubble_sort(const_char_array, len, less_than);
+    cout << "sort: descending order:" << endl;
+    Print(const_char_array, len);*/
+
+    cout << "\n----------华丽的分割线 666-----------------\n" << endl;
+
+    Student student_array[] = { Student("ye",100), Student("meng",60), Student("jie",70) };
+    len = (int) sizeof(student_array) / sizeof(*student_array);
+    //sort by name
+    cout << "sort student object by name------" << endl;
+    Student::sort_type = Student::byname;
+    cout << "origin student array:" << endl;
+    Print(student_array, len);
+    bubble_sort(student_array, len, greater_than);
+    cout << "sort by name: ascending order:" << endl;
+    Print(student_array, len);
+    bubble_sort(student_array, len, less_than);
+    cout << "sort by name: descending order:" << endl;
+    Print(student_array, len);
+
+    cout << "\n----------华丽的分割线 666-----------------\n" << endl;
+
+    //sort by score
+    cout << "sort student object by score------" << endl;
+    Student::sort_type = Student::byscore;
+    cout << "origin student array:" << endl;
+    Print(student_array, len);
+    bubble_sort(student_array, len, greater_than);
+    cout << "sort by score: ascending order:" << endl;
+    Print(student_array, len);
+    bubble_sort(student_array, len, less_than);
+    cout << "sort by score: descending order:" << endl;
+    Print(student_array, len);
+    return 0;
+}
