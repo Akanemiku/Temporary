@@ -1,3 +1,10 @@
 # Temporary
-## Java反射
-https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
+## 近代史
+##### 试论戊戌维新的爱国意义
+http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD7984&filename=HZSD198404007&uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrdTViZElLa1ZTSGVITEQxeEs0eUMxQU4=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MDU3NDZPZlpPUm1GeTdoVkx2QUxUZllhckt4RnRYTXE0OUZZNFI4ZVgxTHV4WVM3RGgxVDNxVHJXTTFGckNVUkw=
+
+http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD8589&filename=NCDS198602009&uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrdTViZElLa1ZTSGVITEQxeEs0eUMxQU4=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MTg5MDZLeEZ0Zk1yWTlGYllSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMT2ZaT1JtRnk3aFZiL0xLeTdQZmI=
+
+http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD9899&filename=FZDX199801019&uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrdTViZElLa1ZTSGVITEQxeEs0eUMxQU4=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MDg1NTMzcVRyV00xRnJDVVJMT2ZaT1JtRnk3aFZieklJemZQZHJLeEY5bk1ybzlFYllSOGVYMUx1eFlTN0RoMVQ=
+
+http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD9899&filename=JYDB199901020&uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrdTViZElLa1ZTSGVITEQxeEs0eUMxQU4=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MjYzNDF6VFBiTEt4RjlqTXJvOUhaSVI4ZVgxTHV4WVM3RGgxVDNxVHJXTTFGckNVUkxPZlpPUm1GeTdoVmIzTEw=
