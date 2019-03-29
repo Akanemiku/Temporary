@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格及表单</title>
+</head>
+<body>
+
+<div>
+
+</div>
+<h1>个人资料</h1>
+<from>
+    嗜好:
+    <input type="checkbox" name="hobby" id="a" checked="checked"><label for="a">登山</label>
+    <input type="checkbox" name="hobby" id="b" checked="checked"><label for="b">露营</label>
+    <input type="checkbox" name="hobby" id="c"><label for="c">听音乐</label>
+    <input type="checkbox" name="hobby" id="d"><label for="d">看书报</label>
+</from>
+<br>
+<from>
+    姓名:<input type="text" name="name" placeholder="王占清"><br>
+    住址:<input type="text" name="adr" placeholder="北京市宣武区右安门西街"><br>
+    职业:<input type="text" name="pro" placeholder="程序员">
+    最高学历:
+    <select>
+        <option>专科</option>
+        <option>大学</option>
+        <option selected>硕士</option>
+        <option>博士</option>
+    </select>
+</from>
+<br>
+<input type="submit" value="登录个人资料" />
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套表格</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th></th>
+        <th>Morning</th>
+        <th>Afternoon</th>
+    </tr>
+    <tr>
+        <th>Saturday</th>
+        <td>Cycling</td>
+        <td>Fishing</td>
+    </tr>
+    <tr>
+        <th>Sunday</th>
+        <td>Rowing</td>
+        <td>
+            <table>
+                <tr>
+                    <th>Group 1</th><th>Group2</th>
+                </tr>
+                <tr>
+                    <td>Water Skiing</td><td>Wake boarding</td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>
