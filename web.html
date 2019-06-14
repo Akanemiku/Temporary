@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var city=[
+            ["北京","天津","上海","重庆"],
+            ["南京","苏州","南通","常州"],
+            ["福州","福安","龙岩","南平"],
+            ["广州","朝阳","潮州","澄海"],
+            ["兰州","白银","定西","敦煌"]
+        ];
+        function getCity() {
+            var sltProvince = document.forms["theForm"].elements["province"];
+            var sltCity = document.forms["theForm"].elements["city"];
+            var provinceCity = city[sltProvince.selectedIndex-1];
+
+            document.getElementById("a").innerText=provinceCity;
+
+            //当选择0元素时可以清空城市下拉列表框，仅留一个提示选项
+            sltCity.length = 1;
+            for(var i=0;i<provinceCity.length;i++){
+                sltCity[i+1] = new Option(provinceCity[i],provinceCity[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+<form name="theForm">
+    <select name="province" onchange="getCity()">
+        <option value="0">请选择所在省份</option>
+        <option value="直辖市">直辖市</option>
+        <option value="江苏省">江苏省</option>
+        <option value="福建省">福建省</option>
+        <option value="广东省">广东省</option>
+        <option value="甘肃省">甘肃省</option>
+    </select>
+    <select name="city">
+        <option value="0">请选择所在城市</option>
+    </select>
+</form>
+<p id="a"></p>
+<p id="b"></p>
+<p id="c"></p>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var province=[
+            ["直辖市","江苏省","福建省","广东省","甘肃省"],
+            ["加利福尼亚州","华盛顿州"],
+            ["东京都","千叶县"]
+        ];
+        var city=[
+            [["北京","天津","上海","重庆"],
+            ["南京","苏州","南通","常州"],
+            ["福州","福安","龙岩","南平"],
+            ["广州","朝阳","潮州","澄海"],
+            ["兰州","白银","定西","敦煌"]]
+        ];
+        function getProvince() {
+            var sltCountry = document.forms["theForm"].elements["country"];
+            var sltProvince = document.forms["theForm"].elements["province"];
+            var sltCity = document.forms["theForm"].elements["city"];
+
+            var countryProvince = province[sltCountry.selectedIndex-1];
+
+            sltProvince.length = 1;
+            sltCity.length = 1;
+
+            for(var i=0;i<countryProvince.length;i++){
+                sltProvince[i+1] = new Option(countryProvince[i],countryProvince[i]);
+            }
+        }
+        function getCity() {
+            var sltCountry = document.forms["theForm"].elements["country"];
+            var sltProvince = document.forms["theForm"].elements["province"];
+            var sltCity = document.forms["theForm"].elements["city"];
+            
+            var provinceCity = city[sltCountry.selectedIndex-1][sltProvince.selectedIndex-1];
+
+            //当选择0元素时可以清空城市下拉列表框，仅留一个提示选项
+            sltCity.length = 1;
+            for(var i=0;i<provinceCity.length;i++){
+                sltCity[i+1] = new Option(provinceCity[i],provinceCity[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+<form name="theForm">
+    <select name="country" onchange="getProvince()">
+        <option value="0">请选择所在国家</option>
+        <option value="中国">中国</option>
+        <option value="美国">美国</option>
+        <option value="日本">日本</option>
+    </select>
+    <select name="province" onchange="getCity()">
+        <option value="0">请选择所在省份</option>
+    </select>
+    <select name="city">
+        <option value="0">请选择所在城市</option>
+    </select>
+</form>
+</body>
+</html>
