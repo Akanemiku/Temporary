@@ -57,43 +57,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript">
-        var province=[
-            ["直辖市","江苏省","福建省","广东省","甘肃省"],
-            ["加利福尼亚州","华盛顿州"],
-            ["东京都","千叶县"]
+        var province = [
+            ["直辖市", "江苏省", "福建省", "广东省", "甘肃省"],
+            ["加利福尼亚州", "内华达州", "佛罗里达州"],
+            ["东京都", "千叶县"]
         ];
-        var city=[
-            [["北京","天津","上海","重庆"],
-            ["南京","苏州","南通","常州"],
-            ["福州","福安","龙岩","南平"],
-            ["广州","朝阳","潮州","澄海"],
-            ["兰州","白银","定西","敦煌"]]
+        var city = [
+            [
+                ["北京", "天津", "上海", "重庆"],
+                ["南京", "苏州", "南通", "常州"],
+                ["福州", "福安", "龙岩", "南平"],
+                ["广州", "朝阳", "潮州", "澄海"],
+                ["兰州", "白银", "定西", "敦煌"]
+            ],
+            [
+                ["洛杉矶", "旧金山"],
+                ["拉斯维加斯", "斯帕克斯"],
+                ["布洛瓦尔德", "希尔斯伯勒"]
+            ],
+            [
+                ["中央", "千代田", "江户川", "中野", "足立"],
+                ["千叶市", "市川市", "野田市","松户市"]
+            ]
         ];
+
         function getProvince() {
             var sltCountry = document.forms["theForm"].elements["country"];
             var sltProvince = document.forms["theForm"].elements["province"];
             var sltCity = document.forms["theForm"].elements["city"];
 
-            var countryProvince = province[sltCountry.selectedIndex-1];
-
+            var countryProvince = province[sltCountry.selectedIndex - 1];
             sltProvince.length = 1;
             sltCity.length = 1;
 
-            for(var i=0;i<countryProvince.length;i++){
-                sltProvince[i+1] = new Option(countryProvince[i],countryProvince[i]);
+            for (var i = 0; i < countryProvince.length; i++) {
+                sltProvince[i + 1] = new Option(countryProvince[i], countryProvince[i]);
             }
         }
+
         function getCity() {
             var sltCountry = document.forms["theForm"].elements["country"];
             var sltProvince = document.forms["theForm"].elements["province"];
             var sltCity = document.forms["theForm"].elements["city"];
-            
-            var provinceCity = city[sltCountry.selectedIndex-1][sltProvince.selectedIndex-1];
 
+            var provinceCity = city[sltCountry.selectedIndex - 1][sltProvince.selectedIndex - 1];
             //当选择0元素时可以清空城市下拉列表框，仅留一个提示选项
             sltCity.length = 1;
-            for(var i=0;i<provinceCity.length;i++){
-                sltCity[i+1] = new Option(provinceCity[i],provinceCity[i]);
+            for (var i = 0; i < provinceCity.length; i++) {
+                sltCity[i + 1] = new Option(provinceCity[i], provinceCity[i]);
             }
         }
     </script>
